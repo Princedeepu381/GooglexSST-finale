@@ -3,39 +3,7 @@
 import { AlertCircle, FileText, ChevronDown, ChevronUp, Lightbulb } from "lucide-react";
 import { useState, memo } from "react";
 
-/** Possible severity levels for identified contract risks */
-export type RiskSeverity = "High" | "Medium" | "Low";
-
-/** Risk category types for clause classification */
-export type RiskCategory = "Privacy" | "Financial" | "Employment" | "IP" | "Termination" | "Compliance" | "Ambiguity";
-
-/** Individual risk finding from the Gemini analysis */
-export interface Risk {
-  id: string;
-  category: string;
-  originalText: string;
-  explanation: string;
-  consequence: string;
-  severity: RiskSeverity;
-  recommendation?: string;
-  industryStandard?: string;
-}
-
-/** Complete analysis result returned by the /api/analyze endpoint */
-export interface AnalysisResult {
-  overallScore: number;
-  summary: string;
-  documentType?: string;
-  metrics: {
-    privacyScore: number;
-    financialRiskScore: number;
-    employmentFairnessScore: number;
-    ipProtectionScore: number;
-    terminationFairnessScore: number;
-    ambiguityScore: number;
-  };
-  risks: Risk[];
-}
+import { Risk, AnalysisResult, RiskSeverity } from "@/types";
 
 /** Severity badge color mappings */
 const SEVERITY_COLORS: Record<string, string> = {

@@ -1,7 +1,14 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { AnalysisResult, RiskCard, ScoreCircle, MetricBar } from "@/components/RiskCard";
+import { useState, useRef, Suspense } from "react";
+import dynamic from "next/dynamic";
+import { AnalysisResult } from "@/types";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+
+// Dynamically import heavy UI components for maximum efficiency
+const RiskCard = dynamic(() => import("@/components/RiskCard").then(mod => mod.RiskCard), { ssr: false });
+const ScoreCircle = dynamic(() => import("@/components/RiskCard").then(mod => mod.ScoreCircle), { ssr: false });
+const MetricBar = dynamic(() => import("@/components/RiskCard").then(mod => mod.MetricBar), { ssr: false });
 import {
   Shield, ShieldAlert, FileSearch, ArrowRight, Loader2,
   Database, Brain, Lock, Sparkles, Zap, Eye, Cloud, Box,
@@ -355,7 +362,9 @@ export default function Home() {
 
                 {/* === SCORECARD === */}
                 {result && (
-                  <div className="space-y-6">
+                  <ErrorBoundary fallback={<div className="p-4 bg-red-500/10 text-red-500">Failed to load scorecard UI.</div>}>
+                    <Suspense fallback={<div className="animate-pulse h-32 bg-[#171717] rounded-xl"></div>}>
+                      <div className="space-y-6">
                     {/* Overall Score + Summary */}
                     <div className="bg-[#171717] border border-[#333333] rounded-xl p-6">
                       <div className="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
@@ -415,7 +424,9 @@ export default function Home() {
                         <p className="text-sm">No significant risks or liabilities detected in this document.</p>
                       </div>
                     )}
-                  </div>
+                    </div>
+                  </Suspense>
+                </ErrorBoundary>
                 )}
               </div>
             </div>
