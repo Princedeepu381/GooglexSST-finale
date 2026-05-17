@@ -69,6 +69,9 @@ Each detected risk is classified as **High**, **Medium**, or **Low** severity wi
 | **Google Artifact Registry** | Container image versioning and storage | `cloudbuild.yaml` |
 | **Google Cloud Build** | CI/CD pipeline — build, push, deploy automation | `cloudbuild.yaml` |
 | **Google Cloud Logging** | Structured JSON logging for monitoring and debugging | `src/lib/logger.ts` |
+| **Google BigQuery** | Enterprise analytics tracking for contract risk events | `src/lib/gcp.ts` |
+| **Google Cloud Storage** | Secure archiving for high-risk documents | `src/lib/gcp.ts` |
+| **Google Analytics** | Traffic and interaction monitoring via next/third-parties | `src/app/layout.tsx` |
 | **Google Fonts (Inter)** | Optimized typography via `next/font/google` with layout shift prevention | `src/app/layout.tsx` |
 
 ## Tech Stack
