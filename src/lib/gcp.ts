@@ -27,7 +27,7 @@ export async function logToBigQuery(event: {
     }
     await bigquery.dataset(DATASET_ID).table(TABLE_ID).insert([event]);
     cloudLog("INFO", "Logged event to BigQuery", "gcp-analytics", { event });
-  } catch (error) {
+  } catch {
     // Fail silently so as not to disrupt the user flow
     cloudLog("WARNING", "BigQuery insert failed (expected in demo)", "gcp-analytics");
   }
@@ -47,7 +47,7 @@ export async function archiveToStorage(filename: string, content: string) {
       contentType: "text/plain",
     });
     cloudLog("INFO", "Archived high-risk doc to GCS", "gcp-storage", { filename });
-  } catch (error) {
+  } catch {
     cloudLog("WARNING", "GCS upload failed (expected in demo)", "gcp-storage");
   }
 }

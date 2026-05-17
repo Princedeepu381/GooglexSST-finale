@@ -3,7 +3,7 @@
 import { AlertCircle, FileText, ChevronDown, ChevronUp, Lightbulb } from "lucide-react";
 import { useState, memo } from "react";
 
-import { Risk, AnalysisResult, RiskSeverity } from "@/types";
+import { Risk } from "@/types";
 
 /** Severity badge color mappings */
 const SEVERITY_COLORS: Record<string, string> = {
