@@ -2,7 +2,7 @@
 
 > **Problem Statement 01** · Open Innovation Hackathon 2026
 
-> **🚀 Live Demo:** [https://lexguard-896956006094.asia-south1.run.app](https://lexguard-896956006094.asia-south1.run.app)
+
 
 LexGuard is an AI-powered contract intelligence platform that analyzes legal and quasi-legal documents to identify potentially harmful, exploitative, ambiguous, or high-risk clauses before users agree to them.
 
